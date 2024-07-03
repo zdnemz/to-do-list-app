@@ -1,6 +1,7 @@
 import response from "@/utils/response";
 import { Hono } from "hono";
-import { users } from "./user";
+import auth from "./auth";
+import users from "./user";
 
 export const routes = new Hono();
 
@@ -11,3 +12,4 @@ routes.get("/health", async (c) => {
 
 // users endpoint
 routes.route("/users", users);
+routes.route("/auth", auth);

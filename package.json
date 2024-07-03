@@ -8,8 +8,10 @@
   },
   "dependencies": {
     "@hono/zod-validator": "^0.2.2",
+    "@types/uuid": "^10.0.0",
     "hono": "^4.4.8",
     "mongoose": "^8.4.4",
+    "uuid": "^10.0.0",
     "winston": "^3.13.0"
   },
   "devDependencies": {

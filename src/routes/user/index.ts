@@ -4,7 +4,10 @@ import { createUserSchema } from "@/validations/user";
 import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 
-export const users = new Hono();
+const users = new Hono();
 
-users.post("/create", zValidator("json", createUserSchema), user.register);
+users.post("/register", zValidator("json", createUserSchema), user.register);
 users.get("/me", verify, user.getMe);
+users.put("/update", verify, zValidator("json", createUserSchema), user.update);
+
+export default users;
