@@ -1,0 +1,12 @@
+# deps
+node_modules/
+
+# logger
+*.log
+logs/
+
+# env
+.env
+
+# dist
+dist/
