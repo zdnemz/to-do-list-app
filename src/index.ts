@@ -1,11 +1,11 @@
-import { app } from "@/configs/app";
+import { app as server } from "@/configs/app";
 import { connectDB } from "@/configs/database";
 import { logger } from "./utils/logger";
 
-const listen = async () => {
+const app = async () => {
   await connectDB();
   logger.info("Server started on port 3000");
-  return app;
+  return server;
 };
 
-export default await listen();
+export default await app();
