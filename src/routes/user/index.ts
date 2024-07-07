@@ -1,13 +1,22 @@
-import * as user from "@/controllers/user";
-import { verify } from "@/middlewares/verify";
+import user from "@/controllers/user";
+import { protect } from "@/middlewares/protect";
 import { createUserSchema } from "@/validations/user";
 import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 
-const users = new Hono();
+const userRoutes = new Hono();
 
-users.post("/register", zValidator("json", createUserSchema), user.register);
-users.get("/me", verify, user.getMe);
-users.put("/update", verify, zValidator("json", createUserSchema), user.update);
+userRoutes.post(
+  "/register",
+  zValidator("json", createUserSchema),
+  user.register
+);
+userRoutes.get("/me", protect, user.getMe);
+userRoutes.put(
+  "/update",
+  protect,
+  zValidator("json", createUserSchema),
+  user.update
+);
 
-export default users;
+export default userRoutes;

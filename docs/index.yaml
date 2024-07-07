@@ -1,0 +1,431 @@
+openapi: 3.0.3
+info:
+  title: Sample API
+  description: This is a sample API documentation based on the provided response template.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: Local server
+
+paths:
+  /api/health:
+    get:
+      summary: Health GET endpoint
+      description: This endpoint is used to check the health of the API
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                success:
+                  value:
+                    success: true
+                    status: 200
+                    message: OK
+                    data: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                badRequest:
+                  value:
+                    success: false
+                    status: 400
+                    message: Bad Request
+                    data: null
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                unauthorized:
+                  value:
+                    success: false
+                    status: 401
+                    message: Unauthorized
+                    data: null
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                forbidden:
+                  value:
+                    success: false
+                    status: 403
+                    message: Forbidden
+                    data: null
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                notFound:
+                  value:
+                    success: false
+                    status: 404
+                    message: Not Found
+                    data: null
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                conflict:
+                  value:
+                    success: false
+                    status: 409
+                    message: Conflict
+                    data: null
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                internalServerError:
+                  value:
+                    success: false
+                    status: 500
+                    message: Internal Server Error
+                    data: null
+        '501':
+          description: Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                notImplemented:
+                  value:
+                    success: false
+                    status: 501
+                    message: Not Implemented
+                    data: null
+
+  /api/users/register:
+    post:
+      summary: Register POST Endpoint
+      description: This endpoint is used to register a new user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: The email of the user.
+                  example: 6TqXH@example.com
+                password:
+                  type: string
+                  description: The password of the user.
+                  example: Password123!
+                  format: password
+                name:
+                  type: string
+                  description: The name of the user.
+                  example: John
+                  format: name
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                success:
+                  value:
+                    success: true
+                    status: 201
+                    message: Created
+                    data: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                badRequest:
+                  value:
+                    success: false
+                    status: 400
+                    message: Bad Request
+                    data: null
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                conflict:
+                  value:
+                    success: false
+                    status: 409
+                    message: Conflict
+                    data: null
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                internalServerError:
+                  value:
+                    success: false
+                    status: 500
+                    message: Internal Server Error
+                    data: null
+
+  /api/users/update:
+    put:
+      summary: Update User PUT Endpoint
+      description: This endpoint is used to update user information.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: The email of the user.
+                  example: 6TqXH@example.com
+                password:
+                  type: string
+                  description: The password of the user.
+                  example: Password123!
+                  format: password
+                name:
+                  type: string
+                  description: The name of the user.
+                  example: John
+                  format: name
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                success:
+                  value:
+                    success: true
+                    status: 200
+                    message: OK
+                    data: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                badRequest:
+                  value:
+                    success: false
+                    status: 400
+                    message: Bad Request
+                    data: null
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                unauthorized:
+                  value:
+                    success: false
+                    status: 401
+                    message: Unauthorized
+                    data: null
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                forbidden:
+                  value:
+                    success: false
+                    status: 403
+                    message: Forbidden
+                    data: null
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                notFound:
+                  value:
+                    success: false
+                    status: 404
+                    message: Not Found
+                    data: null
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                conflict:
+                  value:
+                    success: false
+                    status: 409
+                    message: Conflict
+                    data: null
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                internalServerError:
+                  value:
+                    success: false
+                    status: 500
+                    message: Internal Server Error
+                    data: null
+        '501':
+          description: Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                notImplemented:
+                  value:
+                    success: false
+                    status: 501
+                    message: Not Implemented
+                    data: null
+
+  /api/auth/login:
+    post:
+      summary: Login User endpoint
+      description: This endpoint is used to login a user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Email of the user
+                  example: 6TqXH@example.com
+                password:
+                  type: string
+                  description: Password of the user
+                  example: Password123!
+      responses:
+        '200':
+          description: OK
+          headers:
+            set-Cookie:
+              description: set-Cookie header
+              schema:
+                type: string
+                example: 'token=access_token; Path=/; Secure; HttpOnly; SameSite=strict'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                success:
+                  value:
+                    success: true
+                    status: 200
+                    message: OK
+                    data: {}
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                notFound:
+                  value:
+                    success: false
+                    status: 404
+                    message: Not Found
+                    data: null
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                internalServerError:
+                  value:
+                    success: false
+                    status: 500
+                    message: Internal Server Error
+                    data: null
+        '501':
+          description: Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                notImplemented:
+                  value:
+                    success: false
+                    status: 501
+                    message: Not Implemented
+                    data: null
+
+components:
+  schemas:
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates if the request was successful.
+        status:
+          type: integer
+          description: HTTP status code of the response.
+        message:
+          type: string
+          description: Textual representation of the status code.
+        data:
+          type: object
+          description: Optional data returned in the response.
+          nullable: true
+      required:
+        - success
+        - status
+        - message

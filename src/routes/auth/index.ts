@@ -1,15 +1,13 @@
-import * as auths from "@/controllers/auth";
+import auth from "@/controllers/auth";
 import { Hono } from "hono";
 import { loginSchema } from "@/validations/auth";
 import { zValidator } from "@hono/zod-validator";
-import { verify } from "@/middlewares/verify";
+import { protect } from "@/middlewares/protect";
 
-const auth = new Hono();
+const authRoutes = new Hono();
 
-auth.use("*", verify);
+authRoutes.post("/login", zValidator("json", loginSchema), auth.login);
+authRoutes.delete("/logout", protect, auth.logout);
+authRoutes.get("/refresh", protect, auth.refreshToken);
 
-auth.post("/login", zValidator("json", loginSchema), auths.login);
-auth.delete("/logout", auths.logout);
-auth.get("/refresh", auths.refreshToken);
-
-export default auth;
+export default authRoutes;
